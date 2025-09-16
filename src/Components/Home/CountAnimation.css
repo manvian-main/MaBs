@@ -1,0 +1,17 @@
+.stats-animated-section {
+  position: relative;
+  overflow: visible;
+}
+.stats-animated-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 20px;
+  box-shadow: 0 0 0 4px #19BDE8 inset;
+  pointer-events: none;
+  z-index: 0;
+  animation: none;
+}
+@keyframes glowPulse {
+  0% { box-shadow: 0 0 0 4px #19BDE8 inset; }
+  100% { box-shadow: 0 0 0 8px #19BDE8 inset; }
+}

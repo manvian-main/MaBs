@@ -1,0 +1,115 @@
+.ui-btn {
+  --btn-default-bg: #010314;
+  --btn-padding: 15px 20px;
+  --btn-hover-bg: rgb(51, 51, 51);
+  --btn-transition: .3s;
+  --btn-letter-spacing: .1rem;
+  --btn-animation-duration: 1.2s;
+  --btn-shadow-color: rgba(0, 0, 0, 0.137);
+  --btn-shadow: 0 2px 10px 0 var(--btn-shadow-color);
+  --hover-btn-color: #19BDE8;
+  --default-btn-color: #fff;
+  --font-size: 16px;
+  /* 👆 this field should not be empty */
+  --font-weight: 600;
+  --font-family: Menlo,Roboto Mono,monospace;
+}
+
+/* button settings 👆 */
+
+.ui-btn {
+  box-sizing: border-box;
+  padding: var(--btn-padding);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--default-btn-color);
+  font: var(--font-weight) var(--font-size) var(--font-family);
+  background: var(--btn-default-bg);
+  cursor: pointer;
+  transition: var(--btn-transition);
+  overflow: hidden;
+  box-shadow: var(--btn-shadow);
+  border-radius: 10px;
+  border: 2px solid #2A2B3A;
+  width: max-content;
+  min-width: 120px;
+}
+
+.ui-btn span {
+  letter-spacing: var(--btn-letter-spacing);
+  transition: var(--btn-transition);
+  box-sizing: border-box;
+  position: relative;
+  background: inherit;
+}
+
+.ui-btn span::before {
+  box-sizing: border-box;
+  position: absolute;
+  content: "";
+  background: inherit;
+}
+
+.ui-btn:hover, .ui-btn:focus {
+  background: var(--btn-default-bg);
+  box-shadow: 0px 0px 10px 0px rgba(10, 165, 204, 0.7);
+  border: 2px solid #19BDE8;
+}
+
+.ui-btn:hover span, .ui-btn:focus span {
+  color: var(--hover-btn-color);
+}
+
+
+
+/* From Uiverse.io by ozgeozkaraa01 */ 
+.bounce-btn {
+  font-size: 2.5rem;
+  background-color: white;
+  color: #19BDE8;
+  width: 70px;
+  height: 70px;
+  min-width: 0;
+  min-height: 0;
+  box-sizing: border-box;
+  opacity: 0.75;
+  cursor: pointer;
+  animation: bounce_diagonal 0.5s infinite; /* Faster bounce */
+  border-radius: 50%; /* Make the button circular */
+  border: 3px solid #19BDE8; /* Thicker, more visible border */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px 0 rgba(25, 189, 232, 0.15);
+  transition: box-shadow 0.2s;
+  padding: 0;
+}
+
+.bounce-btn:active,
+.bounce-btn:focus {
+  box-shadow: 0 0 0 2px #19BDE8;
+}
+
+.bounce-btn.right {
+  margin-top: -20px;
+}
+
+.bounce-btn.right span {
+  font-size: 2rem;
+  line-height: 1;
+  display: inline-block;
+    transform: rotate(-40deg); /* Rotate icon to match bounce direction */
+
+}
+
+@keyframes bounce_diagonal {
+  0%, 100% {
+    transform: translate(-10px, 6px); /* -40° direction bounce */
+    animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
+  }
+  50% {
+    transform: translate(0, 0);
+    animation-timing-function: cubic-bezier(0, 0, 0.2, 1);
+  }
+}

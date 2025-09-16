@@ -1,0 +1,80 @@
+.logo {
+  height: 6em;
+  padding: 1.5em;
+  will-change: filter;
+  transition: filter 300ms;
+}
+.logo:hover {
+  filter: drop-shadow(0 0 2em #646cffaa);
+}
+.logo.react:hover {
+  filter: drop-shadow(0 0 2em #61dafbaa);
+}
+
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear;
+  }
+}
+
+.card {
+  padding: 2em;
+}
+
+.read-the-docs {
+  color: #888;
+}
+.sub-menu {
+  min-width: 810px;
+  min-height: 480px; /* Increased height for What We Do card */
+}
+.sub-menu .grid-cols-2 > :last-child {
+  align-items: flex-end;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Optionally, increase the max height for scrollable columns */
+.max-h-100 {
+  max-height: 430px;
+  width: 340px;
+}
+
+.menu-desc-nowrap {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Custom scrollbar for Industries column */
+.custom-scrollbar {
+  scrollbar-width: thin;
+  scrollbar-color: #38bdf8 #1e293b; /* sky-400 on slate-800 */
+}
+.custom-scrollbar::-webkit-scrollbar {
+  width: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: #38bdf8; /* sky-400 */
+  border-radius: 8px;
+}
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: #1e293b; /* slate-800 */
+  border-radius: 8px;
+}
+
+.grid-cols-2 {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+

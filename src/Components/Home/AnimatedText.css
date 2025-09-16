@@ -1,0 +1,37 @@
+/* src/Components/Home/AnimatedText.css */
+.ml11 {
+  font-weight: 700;
+  font-size: 2.5rem;
+  position: relative;
+  color: #fdfdfd;
+}
+
+.ml11 .text-wrapper {
+  position: relative;
+  display: inline-block;
+  padding: 0.2em 0.1em;
+}
+
+.ml11 .line {
+  position: absolute;
+  left: 0;
+  height: 100%;
+  width: 3px;
+  background-color: #222;
+  transform-origin: 0 50%;
+}
+
+.ml11 .letter {
+  display: inline-block;
+  line-height: 1em;
+  opacity: 0;
+}
+
+@media (max-width: 600px) {
+  .ml11 {
+    font-size: 0.9rem !important;
+  }
+  .ml11 .letters {
+    font-size: 0.9rem !important;
+  }
+}

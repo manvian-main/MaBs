@@ -1,0 +1,427 @@
+/* Background for the whole section */
+.testimonial-section {
+  width: 100%; /* Take full width of parent */
+  max-width: 880px; /* Optional: limit max width for compactness */
+  margin: 0 auto; /* Center horizontally */
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 350px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 1rem;
+  padding: 0.9rem;
+  font-family: sans-serif;
+  overflow-x: hidden;
+  overflow-y: hidden; /* Prevent vertical scroll */
+  flex-wrap: nowrap;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 0; /* Remove any bottom padding/gap */
+  opacity: 0.9;
+}
+
+/* Main testimonial card */
+.testimonial-card {
+  width: 100%;
+  flex: 0 0 100%; /* Ensure each card takes up the full width of the container */
+  max-width: 880px;
+  margin: 0 auto;
+  left: 0;
+  right: 0;
+  height: 350px; /* Adjust height dynamically */
+  display: flex; /* Flex layout for image and content */
+  flex-direction: row; /* Image on the left, content on the right */
+  align-items: center;
+  gap: 2rem; /* Space between image and content */
+  padding: 2rem;
+  background: transparent; /* Make card background transparent so section bg shows during fade */
+  color: white;
+  border-radius: 1rem;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5); /* Retained box-shadow */
+  position: relative;
+  z-index: 1;
+  margin-bottom: 0; /* Remove gap below card */
+  opacity: 0.9;
+  overflow: hidden; /* Prevent overflow of content */
+}
+
+
+
+/* Remove global usage to avoid background section overlap */
+.testimonial-section > .testimonial-card-bg-left,
+.testimonial-section > .testimonial-card-bg-right {
+  display: none !important;
+}
+
+/* Decorative shapes for the card */
+
+
+/* Active card */
+.testimonial-card.active {
+  /* No animation, just show the card */
+  opacity: 1;
+  /* Remove transform for sliding */
+  /* transform: translateX(0); */
+}
+
+/* Inactive card */
+.testimonial-card.inactive {
+  /* Hide the card without animation */
+  opacity: 0;
+  /* Remove transform for sliding */
+  /* transform: translateX(0); */
+}
+
+/* Container for additional client images */
+.additional-clients-container {
+  position: absolute;
+  top: 50%;
+  left: -80px; /* Adjust position to the left of the card */
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem; /* Space between client images */
+}
+
+/* Style for each additional client image */
+.additional-client-image {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%; /* Make the image round */
+ 
+  object-fit: cover;
+  box-shadow: 0 4px 8px rgba(160, 156, 156, 0.2);
+}
+
+/* Container for other client images in a ring format on the left side */
+.other-clients-container {
+  position: absolute;
+  top: 50%;
+  left: 57.8px; /* Moved 1cm (37.8px) more to the right from previous 20px */
+  transform: translateY(-50%);
+  width: 200px; /* Adjust size of the ring for 12 images */
+  height: 200px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%; /* Make the container circular */
+  pointer-events: none; /* Prevent interaction */
+  z-index: 1; /* Ensure it appears above the card background */
+  animation: rollRingClockwise 15s linear infinite;
+}
+
+/* Style for each smaller client image in the ring */
+.other-client-image {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Ensure circular shape */
+ 
+  object-fit: cover; /* Maintain aspect ratio */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18); /* Updated shadow */
+  /* Add transition for smooth movement */
+  transition: top 0.8s, left 0.8s, transform 0.5s cubic-bezier(0.4,0,0.2,1), box-shadow 0.35s cubic-bezier(0.4,0,0.2,1); /* Updated transform and box-shadow transition */
+  cursor: pointer;
+}
+
+/* Remove or comment out the floatAvatar keyframes if not used elsewhere */
+/*
+@keyframes floatAvatar {
+  0% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+  100% { transform: translateY(0); }
+}
+*/
+
+.other-client-image:hover,
+.other-clients-container img:hover {
+  transform: translateY(-20px) scale(1.12); /* Pan up and scale on hover */
+  box-shadow: 0 8px 24px 0 rgba(25,189,232,0.25), 0 2px 8px 0 rgba(0,0,0,0.18); /* Blue glow shadow */
+  z-index: 20;
+  animation: none;
+}
+
+/* Ensure all images in the ring have pointer events for hover */
+.other-clients-container img {
+  pointer-events: auto;
+}
+
+/* Position images in a circular layout in queue order */
+/* These positions assume the array order from React is already in queue order */
+/* Removed old nth-child rules for 1-6 images, so React inline styles can position all 12 images in a circle */
+
+/* Text content */
+.testimonial-content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 80%;
+  max-width: 80%;
+  word-break: break-word; /* Break long words and wrap */
+  overflow-wrap: break-word; /* Ensures breaking at word boundaries if needed */
+  box-sizing: border-box;
+  padding: 1.2rem 1.5rem;
+  border-radius: 1rem;
+  margin-left: 280px; /* Prevent overlap with other-clients-container */
+}
+
+.testimonial-stars {
+  color: #facc15; /* Tailwind yellow-400 */
+  font-size: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-text {
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+}
+
+.testimonial-name {
+  font-weight: bold;
+  font-size: 1.1rem;
+}
+
+.testimonial-title {
+  color: #94a3b8; /* Tailwind slate-400 */
+  font-size: 0.9rem;
+}
+
+/* Animation */
+@keyframes rotateIn {
+  from {
+    transform: rotateY(90deg);
+    opacity: 0;
+  }
+  to {
+    transform: rotateY(0deg);
+    opacity: 1;
+  }
+}
+
+/* Define hover effect animations */
+
+
+@keyframes pulseProfile {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+/* Add hover effect to the testimonial card */
+.testimonial-card:hover .other-clients-container {
+  animation: rollRingClockwise 15s linear infinite; /* Ring rolls on hover */
+}
+
+/* New testimonial background */
+.new-testimonial-background {
+  overflow: hidden;
+  position: absolute;
+  top: -19px;
+  left: 0;
+  right: 0;
+  height: 500px;
+  z-index: 0;
+  padding-top: 6.5rem; /* Add gap above the title */
+  padding-bottom: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+@media (max-width: 600px) {
+  .new-testimonial-background {
+    height: 340px;
+    padding-top: 2.5rem;
+  }
+}
+
+.new-testimonial-background video {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: -1;
+  pointer-events: none;
+}
+
+/* Mobile view adjustments */
+@media (max-width: 600px) {
+  .testimonial-section {
+    width: 100vw;
+    max-width: 99vw;
+    min-width: 0;
+    padding: 0.3rem;
+    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 26vh;
+  }
+  .testimonial-card {
+    flex-direction: column;
+    align-items: center;
+    height: 760px;
+    padding: 0.7rem;
+    gap: 0.7rem;
+  }
+  .testimonial-content {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.2rem 0.2rem 0.5rem;
+    margin-left: 70px !important;
+    margin-right: 0 !important;
+    margin-top: 0;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start !important;
+    text-align: justify !important;
+    order: -1;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    overflow-x: hidden;
+  }
+  .testimonial-text {
+    font-size: 0.65rem;
+    margin-bottom: 0.1rem;
+    word-break: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-line;
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+    text-align: justify;
+  }
+  .other-clients-container {
+    width: 40px;
+    height: 40px;
+    left: 0;
+    right: 0;
+    margin: auto 0;
+    /* Ensure the ring stays inside the card */
+    box-sizing: border-box;
+    overflow: visible;
+    top: 10%;
+    transform: translateY(-50%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 30%;
+    pointer-events: none;
+    background: transparent;
+    z-index: 1;
+    position: absolute;
+    order: 1; /* Images below words */
+  }
+  .main-profile-image-in-ring {
+    width: 32px;
+    height: 32px;
+    border-width: 2px;
+  }
+  .other-client-image {
+    width: 14px;
+    height: 14px;
+    border-width: 1px;
+  }
+  .testimonial-content {
+    font-size: 0.65rem;
+    padding: 0.2rem 0.2rem 0.2rem 20px;
+    margin-left: 120px;
+    margin-top: 0;
+    width: 900px;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    top: 0;
+    order: -1; /* Move words to the top */
+  }
+  .testimonial-stars {
+    font-size: 0.6rem;
+    margin-bottom: 0.1rem;
+  }
+  .testimonial-text {
+    font-size: 0.65rem;
+    margin-bottom: 0.1rem;
+  }
+  .testimonial-name {
+    font-size: 0.65rem;
+  }
+  .testimonial-title {
+    font-size: 0.55rem;
+  }
+  .testimonial-card .testimonial-card-bg-left {
+    width: 40px;
+    height: 100px;
+    left: 20px;
+    top: -10px;
+    filter: blur(20px);
+  }
+  .testimonial-card .testimonial-card-bg-right {
+    width: 40px;
+    height: 120px;
+    left: auto;
+    right: 20px;
+    top: -20px;
+    filter: blur(25px);
+  }
+}
+
+/* Keyframes for rolling ring animation */
+
+.main-profile-image {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 24px 0 rgba(25,189,232,0.18), 0 2px 8px 0 rgba(0,0,0,0.18);
+  margin-right: 1.5rem;
+  margin-left: 0.5rem;
+  border: 4px solid #fff;
+  background: #fff;
+  z-index: 2;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+@media (max-width: 600px) {
+  .main-profile-image {
+    width: 48px;
+    height: 48px;
+    margin-right: 0.5rem;
+    margin-left: 0;
+    border-width: 2px;
+  }
+}
+
+/* Style for the main profile image in the ring */
+.main-profile-image-in-ring {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 6px 24px 0 rgba(25,189,232,0.18), 0 2px 8px 0 rgba(0,0,0,0.18);
+ 
+  background: #fff;
+  z-index: 3;
+  transition: transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+
+@media (max-width: 600px) {
+  .main-profile-image-in-ring {
+    width: 40px;
+    height: 40px;
+    border-width: 2px;
+    position: absolute;
+    top: 15px !important; /* Move up more than 1cm for clear effect */
+  }
+}
+
